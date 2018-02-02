@@ -1,21 +1,35 @@
 package com.company;
 
+import java.util.ArrayList;
+
+
+
 public class Main {
+
+    public static ArrayList<Block> blockchain = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        Block genesisBlock = new Block("The Times 03/Jan/2009 Chancellor on brink of second bailout for banks", "0");
-        System.out.println("Hash for block 1 : " + genesisBlock.getHash());
+        blockchain.add(new Block("The Times 03/Jan/2009 Chancellor on brink of second bailout for banks", "0"));
 
-        Block blockTwo = new Block("Second block", genesisBlock.getHash());
-        System.out.println("Hash for block 2 : " + blockTwo.getHash());
 
-        Block blockTree = new Block("Block numbero 3", blockTwo.getHash() );
-        System.out.println("Hash for block 3 : " + blockTree.getHash());
+        blockchain.add(new Block("Second block", blockchain.get(blockchain.size() -1).getHash()));
 
+
+        blockchain.add(new Block("Block numbero 3", blockchain.get(blockchain.size() -1).getHash()));
+
+        printBlockchain();
 
 
 
 
     }
+
+    public static void printBlockchain(){
+        for(int i = 0; i < blockchain.size(); i++){
+            System.out.println("Hash for blokk " + (i+1) + " : " + blockchain.get(i).getHash());
+        }
+    }
+
+
 }
