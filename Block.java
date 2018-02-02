@@ -27,6 +27,10 @@ public class Block {
         this.previousHash = previousHash;
     }
 
+    public String getHash() {
+        return hash;
+    }
+
     /**
      *
      * @return String i hashformen av den forrige hashen, tiden(da denne blokken ble opprettet) og dataen i denne blokken
@@ -35,6 +39,7 @@ public class Block {
     private String kalkulerHash(){
         String kalkulerhash = Kryptografi.sha256(previousHash + Long.toString(time) + data);
         return kalkulerhash;
+
 
 
     }
